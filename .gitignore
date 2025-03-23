@@ -74,3 +74,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/jupyternotebooks,rust,windows,linux
+
+# Custom ignore
+assignments/*.zip
