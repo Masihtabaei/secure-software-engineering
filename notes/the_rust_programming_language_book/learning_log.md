@@ -15,6 +15,8 @@ This chapter corresponds partially to lecture slides form the first two weeks wi
 
 ### Notes and Thoughts
 
+#### Whaf is Ownership?
+
 Goals of Rust:
 - Preventing undefined behaviors
 - Compile-time preventioln for the sake of performance and productivity
@@ -64,5 +66,46 @@ Clone:
 
 Summary:
 - Only one owner for heap data permitted
-- Automatic heap deallocation after going out of scope
+- Automatic heap deallocation after going out of scope (*Box* Deallocation Principle)
 - Ownership transfer possible via move (used by assignments and function calls)
+
+<hr>
+
+#### References and Borrowing
+
+References:
+- Non-owning pointers
+- Borrow
+- 
+
+
+Goal of references:
+- Offering more convenience for move-only API and heap values (e. g. for handing over *Strings* as function arguments)
+  
+
+Dereferencing:
+- Dereference operator `*`
+- Can be concatenated
+- Not that much visible because of automation done in many cases by Rust (e. g. using dot-syntax or method-call syntax like [`variable.method()`] or some macros)
+
+Types of (de-) reference:
+- Implicit
+- Explicit
+
+Alisiaing:
+- Accesssing the same data through different variables
+- Potentially dangerous (root of some problems like race conditions and more)
+
+<u>Pointer Safety Principle:</u> Aliasing and mutating data at the same time should be forbidden.
+
+Borrow Checker:
+- Responsible for ensuring the safety of references and finding permission violations
+- Three possible permissions on data (read, write, and own) at the compile-time (no runtime existence)
+
+Permissions:
+- Read: Copying data to another location allowed
+- Write: Mutating data allowed
+- Own: Moving or dropping data allowed
+- By default read/own for all variables (using `mut` also write permitted)
+- Temporary changes by references
+- Defined on places (everything on the left-side of an assignment) and not just variables (the reason for possible nuances regarding permissions of a  reference and data behind it)
