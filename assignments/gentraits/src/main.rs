@@ -41,7 +41,6 @@ fn main() {
 
     let mut c3 = IntCollector::<i32> { data: vec![] };
 
-
     let mut c4 = IntCollector::<i8> { data: vec![] };
     c4.collect(1);
     c4.collect(2);
